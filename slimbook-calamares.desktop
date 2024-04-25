@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Slimbook OS
+GenericName=Slimbook OS Installer
+Exec=slimbook-calamares
+Comment=Slimbook OS Installer
+Keywords=calamares;system;install;slimbook;installer
+Icon=slimbook-calamares
+Terminal=false
+Categories=Qt;System;
+StartupWMClass=calamares
+StartupNotify=True
