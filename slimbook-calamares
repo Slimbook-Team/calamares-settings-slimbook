@@ -1,4 +1,0 @@
-#!/bin/sh
-xhost +si:localuser:root
-pkexec calamares
-xhost -si:localuser:root

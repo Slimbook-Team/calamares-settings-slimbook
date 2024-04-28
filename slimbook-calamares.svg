@@ -23,7 +23,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="4.6458333"
-     inkscape:cx="32.609865"
+     inkscape:cx="32.825112"
      inkscape:cy="26.044843"
      inkscape:window-width="1366"
      inkscape:window-height="679"
@@ -106,11 +106,13 @@
      xlink:href="#a"
      y1="36"
      y2="41" />
-  <path
-     d="M8 4h32v26H8z"
-     fill="url(#b)"
-     id="path6"
-     style="fill:#1d99f3;fill-opacity:1" />
+  <rect
+     style="fill:#009bde;stroke-width:2.15119;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+     id="rect1"
+     width="32"
+     height="25.997622"
+     x="8"
+     y="4.0011892" />
   <g
      id="g10-3"
      inkscape:export-filename="/home/practicas/Escritorio/DISEÑOS/MATERIAL DISEÑOS/BOOU/cabeza_ping_negra.png"
