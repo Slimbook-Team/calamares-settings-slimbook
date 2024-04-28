@@ -1,4 +1,9 @@
 #!/bin/sh
-xhost +si:localuser:root
+export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
+export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
+
+if [ -f /var/lib/slimbook-oem-enabled ]; then
+    export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
+fi
+
 pkexec calamares
-xhost -si:localuser:root
