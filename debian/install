@@ -1,4 +1,4 @@
-slimbook/*  /etc/calamares/
-slimbook-calamares /usr/bin/
+slimbook/*  /usr/share/calamares-settings-slimbook/
+slimbook-installer /usr/bin/
 *.desktop   /usr/share/applications/
 *.svg /usr/share/icons/hicolor/scalable/apps/
