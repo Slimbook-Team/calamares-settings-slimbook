@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.2.1) noble; urgency=medium
+
+  * Missing calamares argument
+
+ -- Slimbook <dev@slimbook.es>  Mon, 29 Apr 2024 18:14:49 +0200
+
 calamares-settings-slimbook (24.2.0) noble; urgency=medium
 
   * oem fixes
