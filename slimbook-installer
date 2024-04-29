@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 function run_installer
 {
     export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
@@ -14,6 +16,7 @@ function run_installer
         XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS \
         DISPLAY=$DISPLAY \
         XAUTHORITY=$XAUTHORITY \
+        QT_STYLE_OVERRIDE=adwaita \
         calamares -X
 
 }
