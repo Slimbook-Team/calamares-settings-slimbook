@@ -1,9 +1,46 @@
-#!/bin/sh
-export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
-export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
+#!/bin/bash
 
-if [ -f /var/lib/slimbook-oem-enabled ]; then
-    export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
-fi
+function run_installer
+{
+    export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
+    export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
 
-pkexec calamares
+    if [ -f /var/lib/slimbook-oem-enabled ]; then
+        export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
+    fi
+
+    pkexec env \
+        XDG_DATA_DIRS=$XDG_DATA_DIRS \
+        XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS \
+        DISPLAY=$DISPLAY \
+        XAUTHORITY=$XAUTHORITY \
+        calamares
+
+}
+
+function enable_oem
+{
+    touch /var/lib/slimbook-oem-enabled
+    cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig
+    cp /etc/gdm3/daemon.conf /etc/gdm3/custom.conf
+}
+
+function disable_oem
+{
+    rm /var/lib/slimbook-oem-enabled
+    rm cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
+}
+
+case $1 in
+    "--enable-oem")
+        enable_oem
+    ;;
+
+    "--disable-oem")
+        disable_oem
+    ;;
+
+    *)
+        run_installer
+    ;;
+esac
