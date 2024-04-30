@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 function run_installer
 {
     export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
