@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.4.3) noble; urgency=medium
+
+  * This may enable autostart
+
+ -- Slimbook <dev@slimbook.es>  Tue, 30 Apr 2024 23:03:58 +0200
+
 calamares-settings-slimbook (24.4.2) noble; urgency=medium
 
   * Fixed some bugs on binary

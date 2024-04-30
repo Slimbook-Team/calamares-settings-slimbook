@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+
+case "$1" in
+    configure)
+        if [ ! -f /var/lib/slimbook.installer.done ]; then
+            cp /usr/share/calamares-settings-slimbook/slimbook-installer-autostart.desktop /etc/xdg/autostart/
+            cp /usr/share/calamares-settings-slimbook/slimbook-installer.desktop /usr/share/applications/
+        fi
+    ;;
+
+    abort-upgrade|abort-deconfigure|abort-remove)
+    ;;
+
+    *)
+    echo "$0 called with unknown argument \`$1'" 1>&2
+    exit 1
+    ;;
+esac
+
+exit 0
