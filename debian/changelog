@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.4.0) noble; urgency=medium
+
+  * Big refactor on user creation
+
+ -- Slimbook <dev@slimbook.es>  Tue, 30 Apr 2024 15:43:13 +0200
+
 calamares-settings-slimbook (24.3.1) noble; urgency=medium
 
   * Fixed typo

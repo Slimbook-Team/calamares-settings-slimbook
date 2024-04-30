@@ -2,3 +2,4 @@ slimbook/*  /usr/share/calamares-settings-slimbook/
 slimbook-installer /usr/bin/
 *.desktop   /usr/share/applications/
 *.svg /usr/share/icons/hicolor/scalable/apps/
+*.policy /usr/share/polkit-1/actions/
