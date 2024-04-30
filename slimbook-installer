@@ -7,31 +7,44 @@ function run_installer
     export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
     export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
 
-    if [ -f /var/lib/slimbook-oem-enabled ]; then
+    if [ -f /var/lib/slimbook.installer.oem ]; then
         export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
     fi
 
-    pkexec env \
-        XDG_DATA_DIRS=$XDG_DATA_DIRS \
-        XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS \
-        DISPLAY=$DISPLAY \
-        XAUTHORITY=$XAUTHORITY \
-        QT_STYLE_OVERRIDE=adwaita \
-        calamares -X
+    #export QT_STYLE_OVERRIDE=adwaita
+    calamares -X
 
 }
 
 function enable_oem
 {
-    touch /var/lib/slimbook-oem-enabled
+    touch /var/lib/slimbook.installer.oem
     cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig
-    cp /etc/gdm3/daemon.conf /etc/gdm3/custom.conf
+
+    id -u slimbook
+
+    if [ $? -eq 0 ]; then
+        adduser --disabled-password --shell /bin/bash --gecos "Slimbook OEM" slimbook
+    fi
+
+    usermod -U slimbook
+
+    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=slimbook\n" > /etc/gdm3/custom.conf
+
+    if [ -f /var/lib/slimbook.installer.done ]; then
+        rm /var/lib/slimbook.installer.done
+    fi
 }
 
 function disable_oem
 {
-    rm /var/lib/slimbook-oem-enabled
-    rm cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
+    if [ -f /var/lib/slimbook.installer.oem ]; then
+        rm /var/lib/slimbook.installer.oem
+        cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
+        usermod -L slimbook
+        touch /var/lib/slimbook.installer.done
+    fi
+
 }
 
 case $1 in
