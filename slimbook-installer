@@ -32,6 +32,9 @@ function enable_oem
     if [ -f /var/lib/slimbook.installer.done ]; then
         rm /var/lib/slimbook.installer.done
     fi
+
+    cp /usr/share/calamares-settings-slimbook/slimbook-installer-autostart.desktop /etc/xdg/autostart/
+    cp /usr/share/calamares-settings-slimbook/slimbook-installer.desktop /usr/share/applications/
 }
 
 function disable_oem
@@ -45,9 +48,16 @@ function disable_oem
             usermod -L slimbook
         fi
 
+        rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
+        rm /usr/share/applications/slimbook-installer.desktop
         touch /var/lib/slimbook.installer.done
     fi
 
+}
+
+function autostart
+{
+    run_installer
 }
 
 case $1 in
@@ -57,6 +67,10 @@ case $1 in
 
     "--disable-oem")
         disable_oem
+    ;;
+
+    "--autostart")
+        autostart
     ;;
 
     *)
