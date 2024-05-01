@@ -27,6 +27,7 @@ function enable_oem
 
     passwd -d slimbook
     usermod -U slimbook
+    usermod -a -G sudo slimbook
 
     echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=slimbook\n" > /etc/gdm3/custom.conf
 
