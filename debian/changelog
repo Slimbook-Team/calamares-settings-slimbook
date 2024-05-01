@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.4.5) noble; urgency=medium
+
+  * Missing oem user at sudo group
+
+ -- Slimbook <dev@slimbook.es>  Thu, 02 May 2024 00:18:38 +0200
+
 calamares-settings-slimbook (24.4.4) noble; urgency=medium
 
   * Passwordless oem user
