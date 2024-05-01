@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.4.4) noble; urgency=medium
+
+  * Passwordless oem user
+
+ -- Slimbook <dev@slimbook.es>  Wed, 01 May 2024 23:49:18 +0200
+
 calamares-settings-slimbook (24.4.3) noble; urgency=medium
 
   * This may enable autostart
