@@ -8,7 +8,7 @@ Homepage: https://slimbook.es
 
 Package: calamares-settings-slimbook
 Architecture: all
-Depends: calamares
+Depends: calamares, qml-module-qtquick2, qml-module-qtquick-window2
 Description: Slimbook calamares
  Slimbook calamares settings
 

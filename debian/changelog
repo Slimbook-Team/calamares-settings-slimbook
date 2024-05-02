@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.4.5.1) noble; urgency=medium
+
+  * Missing qml dependencies
+
+ -- Slimbook <dev@slimbook.es>  Thu, 02 May 2024 22:34:41 +0200
+
 calamares-settings-slimbook (24.4.5) noble; urgency=medium
 
   * Missing oem user at sudo group
