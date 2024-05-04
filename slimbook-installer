@@ -19,17 +19,17 @@ function enable_oem
     touch /var/lib/slimbook.installer.oem
     cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig
 
-    id -u slimbook
+    id -u slimbook-oem
 
     if [ $? -eq 1 ]; then
-        adduser --firstuid 2000 --shell /bin/bash --gecos "Slimbook OEM" slimbook
+        adduser --firstuid 2000 --shell /bin/bash --gecos "Slimbook OEM" slimbook-oem
     fi
 
-    passwd -d slimbook
-    usermod -U slimbook
-    usermod -a -G sudo slimbook
+    passwd -d slimbook-oem
+    usermod -U slimbook-oem
+    usermod -a -G sudo slimbook-oem
 
-    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=slimbook\n" > /etc/gdm3/custom.conf
+    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=slimbook-oem\n" > /etc/gdm3/custom.conf
 
     if [ -f /var/lib/slimbook.installer.done ]; then
         rm /var/lib/slimbook.installer.done
@@ -45,9 +45,9 @@ function disable_oem
         rm /var/lib/slimbook.installer.oem
         cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
 
-        id -u slimbook
+        id -u slimbook-oem
         if [ $? -eq 0 ]; then
-            usermod -L slimbook
+            usermod -L slimbook-oem
         fi
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
@@ -62,6 +62,15 @@ function autostart
     run_installer
 }
 
+function install_extra_packages
+{
+    sleep 4
+    model_str=`slimbookctl info | grep model | cut -d ":" -f 2`
+    family=`echo $model_str | sed -e 's/0x\(.*\)../\1/'`
+
+    echo ${family} > /tmp/slimbook.txt
+}
+
 case $1 in
     "--enable-oem")
         enable_oem
@@ -73,6 +82,10 @@ case $1 in
 
     "--autostart")
         autostart
+    ;;
+
+    "--install-extra-packages")
+        install_extra_packages
     ;;
 
     *)
