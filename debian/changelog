@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.5.1) noble; urgency=medium
+
+  * updated slide
+  * code clean up
+
+ -- Slimbook <dev@slimbook.es>  Sun, 05 May 2024 21:36:24 +0200
+
 calamares-settings-slimbook (24.5.0) noble; urgency=medium
 
   * Added some default config for partition plugin
