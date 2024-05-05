@@ -1,5 +1,7 @@
 #!/bin/bash
 
+OEM_USER=slimbook-oem
+
 function run_installer
 {
     export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
@@ -19,17 +21,17 @@ function enable_oem
     touch /var/lib/slimbook.installer.oem
     cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig
 
-    id -u slimbook-oem
+    id -u $OEM_USER
 
     if [ $? -eq 1 ]; then
-        adduser --firstuid 2000 --shell /bin/bash --gecos "Slimbook OEM" slimbook-oem
+        adduser --firstuid 2000 --shell /bin/bash --gecos "Slimbook OEM" $OEM_USER
     fi
 
-    passwd -d slimbook-oem
-    usermod -U slimbook-oem
-    usermod -a -G sudo slimbook-oem
+    passwd -d $OEM_USER
+    usermod -U $OEM_USER
+    usermod -a -G sudo $OEM_USER
 
-    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=slimbook-oem\n" > /etc/gdm3/custom.conf
+    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=${OEM_USER}\n" > /etc/gdm3/custom.conf
 
     if [ -f /var/lib/slimbook.installer.done ]; then
         rm /var/lib/slimbook.installer.done
@@ -45,9 +47,9 @@ function disable_oem
         rm /var/lib/slimbook.installer.oem
         cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
 
-        id -u slimbook-oem
+        id -u $OEM_USER
         if [ $? -eq 0 ]; then
-            usermod -L slimbook-oem
+            usermod -L $OEM_USER
         fi
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
@@ -64,7 +66,6 @@ function autostart
 
 function install_extra_packages
 {
-    sleep 4
     model_str=`slimbookctl info | grep model | cut -d ":" -f 2`
     family=`echo $model_str | sed -e 's/0x\(.*\)../\1/'`
 
