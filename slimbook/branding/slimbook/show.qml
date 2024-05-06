@@ -33,14 +33,15 @@ Presentation
         Image {
             id: background
             source: "slide.png"
-            width: 467; height: 280
+            width: 600
+
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
         }
         Text {
             anchors.horizontalCenter: background.horizontalCenter
             anchors.top: background.bottom
-            text: qsTr("Welcome Slimbook OS 24")
+            text: qsTr("Welcome to Slimbook OS 24")
             wrapMode: Text.WordWrap
             width: 600
             horizontalAlignment: Text.Center

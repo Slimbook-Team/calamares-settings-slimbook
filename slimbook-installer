@@ -118,7 +118,7 @@ function install_extra_packages
 
     esac
 
-if [ ! -z "$packages" ] then
+if [ ! -z "$packages" ]; then
     /usr/bin/apt -y install $packages
 fi
 
