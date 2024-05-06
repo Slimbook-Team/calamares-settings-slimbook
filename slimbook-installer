@@ -73,42 +73,42 @@ function install_extra_packages
 
         "1")
             echo "* Slimbook Executive"
-            packages = "slimbook-meta-executive"
+            packages="slimbook-meta-executive"
         ;;
 
         "2")
             echo "* Slimbook ProX"
-            packages = "slimbook-meta-prox"
+            packages="slimbook-meta-prox"
         ;;
 
         "4")
             echo "* Slimbook Titan"
-            packages = "slimbook-meta-titan"
+            packages="slimbook-meta-titan"
         ;;
 
         "8")
             echo "* Slimbook Hero"
-            packages = "slimbook-meta-hero"
+            packages="slimbook-meta-hero"
         ;;
 
         "10")
             echo "* Slimbook Essential"
-            packages = "slimbook-meta-elemental"
+            packages="slimbook-meta-elemental"
         ;;
 
         "20")
             echo "* Slimbook Elemental"
-            packages = "slimbook-meta-elemental"
+            packages="slimbook-meta-elemental"
         ;;
 
         "40")
             echo "* Slimbook Excalibur"
-            packages = "slimbook-meta-excalibur"
+            packages="slimbook-meta-excalibur"
         ;;
 
         "80")
             echo "* Slimbook Hero-S"
-            packages = "slimbook-meta-hero-s"
+            packages="slimbook-meta-hero-s"
         ;;
 
         *)
