@@ -12,8 +12,7 @@ case "$1" in
 
     remove|purge)
 
-        cp ${DIVERT_FILE} ${ORIGINAL_FILE} || true
-        rm ${DIVERT_FILE} || true
+        mv ${DIVERT_FILE} ${ORIGINAL_FILE} || true
         dpkg-divert --package  ${PACKAGE_NAME} --no-rename --remove ${ORIGINAL_FILE}|| true
 
     ;;

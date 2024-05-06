@@ -14,7 +14,7 @@ case "$1" in
         fi
 
         dpkg-divert --package ${PACKAGE_NAME} --no-rename --add ${ORIGINAL_FILE}
-        cp ${ORIGINAL_FILE} ${DIVERT_FILE}
+        mv ${ORIGINAL_FILE} ${DIVERT_FILE} || true
     ;;
 
     abort-upgrade|abort-deconfigure|abort-remove)

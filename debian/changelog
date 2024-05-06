@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.6.1) noble; urgency=medium
+
+  * Fixed bug on cmd
+  * Minor visual improvement
+
+ -- Slimbook <dev@slimbook.es>  Mon, 06 May 2024 21:40:04 +0200
+
 calamares-settings-slimbook (24.6.0) noble; urgency=medium
 
   * Added a default partition layout
