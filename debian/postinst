@@ -2,6 +2,9 @@
 
 set -e
 
+PACKAGE_NAME="calamares-settings-slimbook"
+ORIGINAL_FILE="/usr/share/applications/calamares.desktop"
+DIVERT_FILE="/usr/share/applications/calamares.desktop.divert"
 
 case "$1" in
     configure)
@@ -9,6 +12,9 @@ case "$1" in
             cp /usr/share/calamares-settings-slimbook/slimbook-installer-autostart.desktop /etc/xdg/autostart/
             cp /usr/share/calamares-settings-slimbook/slimbook-installer.desktop /usr/share/applications/
         fi
+
+        dpkg-divert --package ${PACKAGE_NAME} --no-rename --add ${ORIGINAL_FILE}
+        cp ${ORIGINAL_FILE} ${DIVERT_FILE}
     ;;
 
     abort-upgrade|abort-deconfigure|abort-remove)

@@ -1,3 +1,11 @@
+calamares-settings-slimbook (24.6.0) noble; urgency=medium
+
+  * Added a default partition layout
+  * Diverting calamares desktop
+  * Testing slimbook auto-install packages
+
+ -- Slimbook <dev@slimbook.es>  Mon, 06 May 2024 17:49:14 +0200
+
 calamares-settings-slimbook (24.5.1) noble; urgency=medium
 
   * updated slide
