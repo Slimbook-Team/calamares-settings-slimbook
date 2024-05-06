@@ -69,7 +69,59 @@ function install_extra_packages
     model_str=`slimbookctl info | grep model | cut -d ":" -f 2`
     family=`echo $model_str | sed -e 's/0x\(.*\)../\1/'`
 
-    echo ${family} > /tmp/slimbook.txt
+    case $family in
+
+        "1")
+            echo "* Slimbook Executive"
+            packages = "slimbook-meta-executive"
+        ;;
+
+        "2")
+            echo "* Slimbook ProX"
+            packages = "slimbook-meta-prox"
+        ;;
+
+        "4")
+            echo "* Slimbook Titan"
+            packages = "slimbook-meta-titan"
+        ;;
+
+        "8")
+            echo "* Slimbook Hero"
+            packages = "slimbook-meta-hero"
+        ;;
+
+        "10")
+            echo "* Slimbook Essential"
+            packages = "slimbook-meta-elemental"
+        ;;
+
+        "20")
+            echo "* Slimbook Elemental"
+            packages = "slimbook-meta-elemental"
+        ;;
+
+        "40")
+            echo "* Slimbook Excalibur"
+            packages = "slimbook-meta-excalibur"
+        ;;
+
+        "80")
+            echo "* Slimbook Hero-S"
+            packages = "slimbook-meta-hero-s"
+        ;;
+
+        *)
+            echo "* Unknown model:"
+            echo slimbookctl info | grep model
+        ;;
+
+    esac
+
+if [ ! -z "$packages" ] then
+    /usr/bin/apt -y install $packages
+fi
+
 }
 
 case $1 in
