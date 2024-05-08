@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.7.1) noble; urgency=medium
+
+  * Missing settings
+
+ -- Slimbook <dev@slimbook.es>  Wed, 08 May 2024 14:23:45 +0200
+
 calamares-settings-slimbook (24.7.0) noble; urgency=medium
 
   * Extra packages has been moved to install step
