@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.7.3) noble; urgency=medium
+
+  * Removed slimbook battery from extra packages
+
+ -- Slimbook <dev@slimbook.es>  Wed, 08 May 2024 22:42:19 +0200
+
 calamares-settings-slimbook (24.7.2) noble; urgency=medium
 
   * Updated extra apps list
