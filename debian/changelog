@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.7.2) noble; urgency=medium
+
+  * Updated extra apps list
+
+ -- Slimbook <dev@slimbook.es>  Wed, 08 May 2024 18:12:37 +0200
+
 calamares-settings-slimbook (24.7.1) noble; urgency=medium
 
   * Missing settings
