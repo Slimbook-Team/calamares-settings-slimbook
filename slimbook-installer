@@ -78,7 +78,7 @@ function install_extra_packages
 
         "2")
             echo "* Slimbook ProX"
-            packages="slimbook-meta-prox slimbookamdcontroller slimbookface slimbookbattery"
+            packages="slimbook-meta-prox slimbookamdcontroller slimbookface"
         ;;
 
         "4")
@@ -93,12 +93,12 @@ function install_extra_packages
 
         "10")
             echo "* Slimbook Essential"
-            packages="slimbook-meta-elemental slimbookbattery slimbookintelcontroller"
+            packages="slimbook-meta-elemental slimbookintelcontroller"
         ;;
 
         "20")
             echo "* Slimbook Elemental"
-            packages="slimbook-meta-elemental slimbookbattery slimbookintelcontroller"
+            packages="slimbook-meta-elemental slimbookintelcontroller"
         ;;
 
         "40")
@@ -112,8 +112,9 @@ function install_extra_packages
         ;;
 
         *)
+
             echo "* Unknown model:"
-            echo slimbookctl info | grep model
+            echo `slimbookctl info | grep model`
         ;;
 
     esac
