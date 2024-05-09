@@ -73,54 +73,72 @@ function install_extra_packages
 
         "1")
             echo "* Slimbook Executive"
-            packages="slimbook-meta-executive slimbookintelcontroller slimbookface"
+            meta="slimbook-meta-executive"
+            packages="slimbookintelcontroller slimbookface"
         ;;
 
         "2")
             echo "* Slimbook ProX"
-            packages="slimbook-meta-prox slimbookamdcontroller slimbookface"
+            meta="slimbook-meta-prox"
+            packages="slimbookamdcontroller slimbookface"
         ;;
 
         "4")
             echo "* Slimbook Titan"
-            packages="slimbook-meta-titan"
+            meta="slimbook-meta-titan"
         ;;
 
         "8")
             echo "* Slimbook Hero"
-            packages="slimbook-meta-hero"
+            meta="slimbook-meta-hero"
         ;;
 
         "10")
             echo "* Slimbook Essential"
-            packages="slimbook-meta-elemental slimbookintelcontroller"
+            meta="slimbook-meta-elemental"
+            packages="slimbookintelcontroller"
         ;;
 
         "20")
             echo "* Slimbook Elemental"
-            packages="slimbook-meta-elemental slimbookintelcontroller"
+            meta="slimbook-meta-elemental"
+            packages="slimbookintelcontroller"
         ;;
 
         "40")
             echo "* Slimbook Excalibur"
-            packages="slimbook-meta-excalibur"
+            meta="slimbook-meta-excalibur"
         ;;
 
         "80")
             echo "* Slimbook Hero-S"
-            packages="slimbook-meta-hero-s slimbookintelcontroller"
+            meta="slimbook-meta-hero-s"
+            packages="slimbookintelcontroller"
         ;;
 
         *)
-
             echo "* Unknown model:"
             echo `slimbookctl info | grep model`
         ;;
 
     esac
 
+if [ ! -z "$meta" ]; then
+    echo "* Installing meta: ${meta}"
+    /usr/bin/apt -y install $meta || true
+fi
+
+connectivity=`nmcli networking connectivity check`
+
 if [ ! -z "$packages" ]; then
-    /usr/bin/apt -y install $packages
+    if [ "$connectivity" = "full" ]; then
+        echo -e "\n* Installing extra packages: ${packages}"
+        /usr/bin/apt -y install $packages || true
+        echo -e "\n* Installing extra drivers..."
+        /usr/bin/ubuntu-drivers install || true
+    else
+        echo "There is no internet connectivty for installing extra packages"
+    fi
 fi
 
 }
