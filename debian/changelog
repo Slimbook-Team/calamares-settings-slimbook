@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.7.10) noble; urgency=medium
+
+  * Using 120s timeout
+
+ -- Slimbook <dev@slimbook.es>  Mon, 13 May 2024 22:30:24 +0200
+
 calamares-settings-slimbook (24.7.9) noble; urgency=medium
 
   * Get rid off connectivity inside extra packages install
