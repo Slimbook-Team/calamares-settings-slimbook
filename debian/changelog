@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.7.8) noble; urgency=medium
+
+  * Check connectivity inside chroot using a ping, not nmcli
+
+ -- Slimbook <dev@slimbook.es>  Mon, 13 May 2024 13:59:27 +0200
+
 calamares-settings-slimbook (24.7.4) noble; urgency=medium
 
   * Improved post-install step
