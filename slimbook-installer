@@ -128,10 +128,12 @@ if [ ! -z "$meta" ]; then
     /usr/bin/apt -y install $meta || true
 fi
 
-connectivity=`nmcli networking connectivity check`
+#check connectivity (it has some room for improvement here)
+ping 8.8.8.8 -c 1 -W 4
+connectivity=$?
 
 if [ ! -z "$packages" ]; then
-    if [ "$connectivity" = "full" ]; then
+    if [ $connectivity -eq 0 ]; then
         echo -e "\n* Installing extra packages: ${packages}"
         /usr/bin/apt -y install $packages || true
         echo -e "\n* Installing extra drivers..."
