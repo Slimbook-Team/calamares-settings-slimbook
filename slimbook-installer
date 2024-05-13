@@ -128,20 +128,13 @@ if [ ! -z "$meta" ]; then
     /usr/bin/apt -y install $meta || true
 fi
 
-#check connectivity (it has some room for improvement here)
-ping 8.8.8.8 -c 1 -W 4
-connectivity=$?
-
 if [ ! -z "$packages" ]; then
-    if [ $connectivity -eq 0 ]; then
-        echo -e "\n* Installing extra packages: ${packages}"
-        /usr/bin/apt -y install $packages || true
-        echo -e "\n* Installing extra drivers..."
-        /usr/bin/ubuntu-drivers install || true
-    else
-        echo "There is no internet connectivty for installing extra packages"
-    fi
+    echo -e "\n* Installing extra packages: ${packages}"
+    /usr/bin/apt -y install $packages || true
 fi
+
+echo -e "\n* Installing extra drivers..."
+/usr/bin/ubuntu-drivers install || true
 
 }
 
