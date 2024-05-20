@@ -2,8 +2,9 @@ Source: calamares-settings-slimbook
 Section: utils
 Priority: optional
 Maintainer: Slimbook <dev@slimbook.es>
-Build-Depends: debhelper (>= 10)
-Standards-Version: 4.1.4
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
 Homepage: https://slimbook.es
 
 Package: calamares-settings-slimbook
