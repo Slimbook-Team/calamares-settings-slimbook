@@ -13,8 +13,11 @@ case "$1" in
             cp /usr/share/calamares-settings-slimbook/slimbook-installer.desktop /usr/share/applications/
         fi
 
-        dpkg-divert --package ${PACKAGE_NAME} --no-rename --add ${ORIGINAL_FILE}
-        mv ${ORIGINAL_FILE} ${DIVERT_FILE} || true
+        if [ -f $ORIGINAL_FILE ]; then
+            dpkg-divert --package ${PACKAGE_NAME} --no-rename --add ${ORIGINAL_FILE}
+            mv ${ORIGINAL_FILE} ${DIVERT_FILE} || true
+        fi
+
     ;;
 
     abort-upgrade|abort-deconfigure|abort-remove)

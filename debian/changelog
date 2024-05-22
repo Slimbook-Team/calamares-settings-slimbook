@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.10.1) noble; urgency=medium
+
+  * Fixed post-install module
+  * checking if diversion is needed
+
+ -- Slimbook <dev@slimbook.es>  Wed, 22 May 2024 22:07:24 +0200
+
 calamares-settings-slimbook (24.10.0) noble; urgency=medium
 
   * Post install process is now a python module
