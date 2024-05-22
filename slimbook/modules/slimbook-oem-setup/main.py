@@ -10,15 +10,19 @@ import libcalamares
 from libcalamares.utils import check_target_env_call
 
 def run():
+    global status
 
-    libcalamares.utils.debug("Disabling OEM mode...")
+    status = "Disabling OEM mode..."
+    libcalamares.utils.debug(status)
     check_target_env_call(["slimbook-installer", "--disable-oem"])
 
     username = libcalamares.globalstorage.value("autoLoginUser")
     if username is not None:
-        libcalamares.utils.debug("Setting up autologin for user {!s}.".format(username))
+        status = "Setting up autologin for user {!s}.".format(username)
+        libcalamares.utils.debug(status)
 
         config = configparser.ConfigParser()
+        config.optionxform = str
         config.read("/etc/gdm3/custom.conf")
         config["daemon"]["AutomaticLogin"] = username
         config["daemon"]["AutomaticLoginEnable"] = "True"
