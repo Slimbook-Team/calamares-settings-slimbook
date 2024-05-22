@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.10.0) noble; urgency=medium
+
+  * Post install process is now a python module
+
+ -- Slimbook <dev@slimbook.es>  Wed, 22 May 2024 19:48:48 +0200
+
 calamares-settings-slimbook (24.9.0) noble; urgency=medium
 
   * New post-oem module that should fix autologin
