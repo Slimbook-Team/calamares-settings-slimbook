@@ -1,0 +1,5 @@
+---
+type:       "job"
+name:       "slimbook-post-install"
+interface:  "python"
+script:     "main.py"

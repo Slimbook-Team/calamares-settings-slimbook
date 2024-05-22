@@ -161,7 +161,7 @@ case $1 in
         install_extra_packages
     ;;
 
-    "--install_grub_ubuntu_hack")
+    "--install-grub-ubuntu-hack")
         install_grub_ubuntu_hack
     ;;
 
