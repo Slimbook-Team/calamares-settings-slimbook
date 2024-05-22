@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.9.0) noble; urgency=medium
+
+  * New post-oem module that should fix autologin
+
+ -- Slimbook <dev@slimbook.es>  Wed, 22 May 2024 16:46:44 +0200
+
 calamares-settings-slimbook (24.8.0) noble; urgency=medium
 
   * Added a bootloader hack when grub uses ubuntu path hardcoded
