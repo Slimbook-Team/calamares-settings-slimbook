@@ -133,15 +133,6 @@ if [ ! -z "$packages" ]; then
     /usr/bin/apt -y install $packages || true
 fi
 
-echo -e "\n* Installing extra drivers..."
-/usr/bin/ubuntu-drivers install || true
-
-}
-
-function install_grub_ubuntu_hack
-{
-    mkdir -p /boot/efi/EFI/ubuntu || true
-    cp /boot/efi/EFI/slimbookos/grub.cfg /boot/efi/EFI/ubuntu/ || true
 }
 
 case $1 in
@@ -159,10 +150,6 @@ case $1 in
 
     "--install-extra-packages")
         install_extra_packages
-    ;;
-
-    "--install-grub-ubuntu-hack")
-        install_grub_ubuntu_hack
     ;;
 
     *)

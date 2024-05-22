@@ -18,9 +18,12 @@ def run():
 
     status = "Preparing Grub..."
     libcalamares.utils.debug(status)
+    target = libcalamares.globalstorage.value("rootMountPoint")
+    efi_path = "{0}/boot/efi/EFI/".format(target)
+
     try :
-        os.makedirs("/boot/efi/EFI/ubuntu", exist_ok = True)
-        shutil.copyfile("/boot/efi/EFI/slimbookos/grub.cfg","/boot/efi/EFI/ubuntu/grub.cfg")
+        os.makedirs(efi_path + "ubuntu", exist_ok = True)
+        shutil.copyfile(efi_path + "slimbookos/grub.cfg",efi_path + "ubuntu/grub.cfg")
     except Exception as e:
         libcalamares.utils.debug(e)
 
