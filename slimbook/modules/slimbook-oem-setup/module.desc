@@ -1,0 +1,5 @@
+---
+type:       "job"
+name:       "slimbook-oem-setup"
+interface:  "python"
+script:     "main.py"
