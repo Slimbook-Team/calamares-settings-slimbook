@@ -74,13 +74,13 @@ function install_extra_packages
         "1")
             echo "* Slimbook Executive"
             meta="slimbook-meta-executive"
-            packages="slimbookintelcontroller slimbookface"
+            packages="slimbookintelcontroller"
         ;;
 
         "2")
             echo "* Slimbook ProX"
             meta="slimbook-meta-prox"
-            packages="slimbookamdcontroller slimbookface"
+            packages="slimbookamdcontroller"
         ;;
 
         "4")
