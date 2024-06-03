@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.11.1) noble; urgency=medium
+
+  * Fixed typo on prerm
+
+ -- Slimbook <dev@slimbook.es>  Mon, 03 Jun 2024 10:06:46 +0200
+
 calamares-settings-slimbook (24.11.0) noble; urgency=medium
 
   * Removed slimbookface from extrapackages

@@ -14,7 +14,7 @@ case "$1" in
         if [ ! -f $ORIGINAL_FILE ]; then
             mv ${DIVERT_FILE} ${ORIGINAL_FILE} || true
             dpkg-divert --package  ${PACKAGE_NAME} --no-rename --remove ${ORIGINAL_FILE}|| true
-        di
+        fi
     ;;
 
     failed-upgrade)
