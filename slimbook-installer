@@ -19,7 +19,6 @@ function run_installer
 function enable_oem
 {
     touch /var/lib/slimbook.installer.oem
-    cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig
 
     id -u $OEM_USER
 
@@ -31,7 +30,17 @@ function enable_oem
     usermod -U $OEM_USER
     usermod -a -G sudo $OEM_USER
 
-    echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=${OEM_USER}\n" > /etc/gdm3/custom.conf
+    # enable gdm autologin
+    if [ -f /usr/sbin/gdm3 ]; then
+        cp /etc/gdm3/custom.conf /etc/gdm3/custom.conf.orig || true
+        echo -e "[daemon]\nAutomaticLoginEnable=True\nAutomaticLogin=${OEM_USER}\n" > /etc/gdm3/custom.conf
+    fi
+
+    # enable sddm autologin
+    if [ -f /usr/bin/sddm ]; then
+        cp /etc/sddm.conf /etc/sddm.conf.orig || true
+        echo -e "[Autologin]\nSession=plasma.desktop\nUser=${OEM_USER}\n" > /etc/sddm.conf
+    fi
 
     if [ -f /var/lib/slimbook.installer.done ]; then
         rm /var/lib/slimbook.installer.done
@@ -45,7 +54,20 @@ function disable_oem
 {
     if [ -f /var/lib/slimbook.installer.oem ]; then
         rm /var/lib/slimbook.installer.oem
-        cp /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf
+
+        # restore gdm settings
+        if [ -f /usr/sbin/gdm3 ]; then
+            mv /etc/gdm3/custom.conf.orig /etc/gdm3/custom.conf || true
+        fi
+
+        # restore sddm settings
+        if [ -f /usr/bin/sddm ]; then
+            rm /etc/sddm.conf || true
+
+            if [ -f /etc/sddm.conf.orig ]; then
+                mv /etc/sddm.conf.orig /etc/sddm.conf
+            fi
+        fi
 
         if [ -f /var/lib/AccountsService/users/$OEM_USER ]; then
             rm -rf /var/lib/AccountsService/users/$OEM_USER
