@@ -4,6 +4,18 @@ OEM_USER=slimbook-oem
 
 function run_installer
 {
+    # symlink to top layer squash
+    CMDLINE=`cat /proc/cmdline`
+    for x in $CMDLINE
+    do
+        case $x in
+            layerfs-path=*)
+                echo "${x#*=}"
+                ln -sf /cdrom/casper/${x#*=} /tmp/top.squashfs
+            ;;
+        esac
+    done
+
     export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
     export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
 
