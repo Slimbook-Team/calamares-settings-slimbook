@@ -35,7 +35,7 @@ function enable_oem
     id -u $OEM_USER
 
     if [ $? -eq 1 ]; then
-        adduser --firstuid 900 --shell /bin/bash --gecos "Slimbook OEM" $OEM_USER
+        adduser --firstuid 900 --home "/var/lib/$OEM_USER" --shell /bin/bash --gecos "Slimbook OEM" $OEM_USER
     fi
 
     passwd -d $OEM_USER
