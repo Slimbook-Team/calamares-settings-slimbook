@@ -1,0 +1,39 @@
+---
+componentName: slimbook
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,580px
+windowPlacement: center
+
+strings:
+    productName:         Slimbook OS
+    shortProductName:    Slimbook OS
+    version:             24
+    shortVersion:        24
+    versionedName:       Slimbook OS 24
+    shortVersionedName:  Slimbook OS 24
+    bootloaderEntryName: Slimbook-OS
+    productUrl:          https://www.slimbook.com
+    supportUrl:          https://www.slimbook.com
+    knownIssuesUrl:      https://www.slimbook.com
+    releaseNotesUrl:     https://www.slimbook.com
+    donateUrl:           https://www.slimbook.com
+
+sidebar: none
+navigation: widget
+
+images:
+    productLogo:         "slimbook-logo.png"
+    productIcon:         "slimbook-logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   SidebarBackground:    "#0074a7"
+   SidebarText:          "#FFFFFF"
+   SidebarTextCurrent:   "#000000"
+   SidebarBackgroundCurrent: "#ffe737"
+
+slideshowAPI: 2
