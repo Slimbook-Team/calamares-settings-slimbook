@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.16.0) noble; urgency=medium
+
+  * There are two separate brandings for both oem and installer steps
+  * OEM user is removed from sudo group once disabled
+
+ -- Slimbook <dev@slimbook.es>  Sat, 28 Sep 2024 11:18:18 +0200
+
 calamares-settings-slimbook (24.15.0) noble; urgency=medium
 
   * Moving oem home to var/lib
