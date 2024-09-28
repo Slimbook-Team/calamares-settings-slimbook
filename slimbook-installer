@@ -87,7 +87,7 @@ function disable_oem
 
         id -u $OEM_USER
         if [ $? -eq 0 ]; then
-            usermod -L $OEM_USER
+            usermod -L -G users $OEM_USER
         fi
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
