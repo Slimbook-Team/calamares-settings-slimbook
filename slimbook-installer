@@ -87,7 +87,7 @@ function disable_oem
 
         id -u $OEM_USER
         if [ $? -eq 0 ]; then
-            usermod -L $OEM_USER
+            usermod -L -G users $OEM_USER
         fi
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
@@ -104,56 +104,67 @@ function autostart
 
 function install_extra_packages
 {
-    model_str=`slimbookctl info | grep model | cut -d ":" -f 2`
-    family=`echo $model_str | sed -e 's/0x\(.*\)../\1/'`
+    family=`slimbookctl info | grep family | cut -d ":" -f 2`
 
     case $family in
 
-        "1")
+        "executive")
             echo "* Slimbook Executive"
             meta="slimbook-meta-executive"
-            packages="slimbookintelcontroller"
+            packages="slimbookintelcontroller slimbookface"
         ;;
 
-        "2")
+        "prox")
             echo "* Slimbook ProX"
             meta="slimbook-meta-prox"
-            packages="slimbookamdcontroller"
+            packages="slimbookamdcontroller slimbookface"
         ;;
 
-        "4")
+        "titan")
             echo "* Slimbook Titan"
-            meta="slimbook-meta-titan"
+            meta="slimbook-meta-titan slimbookface"
         ;;
 
-        "8")
+        "hero")
             echo "* Slimbook Hero"
             meta="slimbook-meta-hero"
         ;;
 
-        "10")
+        "essential")
             echo "* Slimbook Essential"
             meta="slimbook-meta-elemental"
             packages="slimbookintelcontroller"
         ;;
 
-        "20")
+        "elemental")
             echo "* Slimbook Elemental"
             meta="slimbook-meta-elemental"
             packages="slimbookintelcontroller"
         ;;
 
-        "40")
+        "excalibur")
             echo "* Slimbook Excalibur"
             meta="slimbook-meta-excalibur"
         ;;
 
-        "80")
+        "hero-s")
             echo "* Slimbook Hero-S"
             meta="slimbook-meta-hero-s"
             packages="slimbookintelcontroller"
         ;;
 
+        "zero")
+            echo "* Slimbook Zero"
+        ;;
+        
+        "one")
+            echo "* Slimbook One"
+        ;;
+        
+        "nas")
+            echo "* Slimbook Nas"
+        ;;
+        
         *)
             echo "* Unknown model:"
             echo `slimbookctl info | grep model`
@@ -189,7 +200,7 @@ case $1 in
     "--install-extra-packages")
         install_extra_packages
     ;;
-
+    
     *)
         run_installer
     ;;
