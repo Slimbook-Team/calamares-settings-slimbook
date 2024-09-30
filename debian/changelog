@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.16.1) noble; urgency=medium
+
+  * Updated oem logo
+  * Fixed broken branding desc files
+
+ -- Slimbook <dev@slimbook.es>  Mon, 30 Sep 2024 19:52:56 +0200
+
 calamares-settings-slimbook (24.16.0) noble; urgency=medium
 
   * There are two separate brandings for both oem and installer steps
