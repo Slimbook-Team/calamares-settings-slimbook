@@ -28,8 +28,12 @@ def run():
         libcalamares.utils.debug(e)
 
     status = "Installing extra packages..."
-    libcalamares.utils.debug(status)
-    check_target_env_call(["slimbook-installer", "--install-extra-packages"])
+    packages = libcalamares.globalstorage.value("slimbook_extra_apps")
+
+    if (packages):
+        if (len(packages) > 0):
+            args = ["apt","install","-y"] + packages
+            check_target_env_call(args)
 
     status = "Installing extra drivers..."
     libcalamares.utils.debug(status)
