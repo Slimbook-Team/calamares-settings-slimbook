@@ -2,32 +2,6 @@
 
 OEM_USER=slimbook-oem
 
-function run_installer
-{
-    # symlink to top layer squash
-    CMDLINE=`cat /proc/cmdline`
-    for x in $CMDLINE
-    do
-        case $x in
-            layerfs-path=*)
-                echo "${x#*=}"
-                ln -sf /cdrom/casper/${x#*=} /tmp/top.squashfs
-            ;;
-        esac
-    done
-
-    export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
-    export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
-
-    if [ -f /var/lib/slimbook.installer.oem ]; then
-        export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
-    fi
-
-    export QT_STYLE_OVERRIDE=adwaita
-    calamares -X
-
-}
-
 function enable_oem
 {
     touch /var/lib/slimbook.installer.oem
@@ -95,11 +69,6 @@ function disable_oem
         touch /var/lib/slimbook.installer.done
     fi
 
-}
-
-function autostart
-{
-    run_installer
 }
 
 function install_extra_packages
@@ -193,15 +162,10 @@ case $1 in
         disable_oem
     ;;
 
-    "--autostart")
-        autostart
-    ;;
-
     "--install-extra-packages")
         install_extra_packages
     ;;
     
     *)
-        run_installer
     ;;
 esac

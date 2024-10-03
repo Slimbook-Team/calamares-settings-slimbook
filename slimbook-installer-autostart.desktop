@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
-Exec=pkexec slimbook-installer --autostart
+Exec=pkexec slimbook-calamares
 Terminal=false
 StartupNotify=True
