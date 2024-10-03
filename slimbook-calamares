@@ -1,0 +1,34 @@
+#!/bin/bash
+
+function run_installer
+{
+    if [ -f /var/lib/slimbook.installer.done ]; then
+        echo "System is already installed"
+        exit 0
+    fi
+
+    # symlink to top layer squash
+    CMDLINE=`cat /proc/cmdline`
+    for x in $CMDLINE
+    do
+        case $x in
+            layerfs-path=*)
+                echo "${x#*=}"
+                ln -sf /cdrom/casper/${x#*=} /tmp/top.squashfs
+            ;;
+        esac
+    done
+
+    export XDG_DATA_DIRS=/usr/share/calamares-settings-slimbook/:$XDG_DATA_DIRS:/usr/share
+    export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/installer:$XDG_CONFIG_DIRS:/etc/xdg
+
+    if [ -f /var/lib/slimbook.installer.oem ]; then
+        export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
+    fi
+
+    export QT_STYLE_OVERRIDE=adwaita
+    calamares -X
+
+}
+
+run_installer
