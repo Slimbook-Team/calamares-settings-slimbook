@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.18.0) noble; urgency=medium
+
+  * Power supply is no longer checked at oem stage
+  * Some changes made at scripts under pkexec actions
+
+ -- Slimbook <dev@slimbook.es>  Thu, 03 Oct 2024 10:17:20 +0200
+
 calamares-settings-slimbook (24.17.0) noble; urgency=medium
 
   * Using appselector plugin for extra packages
