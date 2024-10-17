@@ -3,7 +3,7 @@ calamares-settings-slimbook (24.19) noble; urgency=medium
   * Added new models to app selection
   * Reordered modules in order to fix broken encription on plasma flavor
 
- --Slimbook <dev@slimbook.es>  Fri, 18 Oct 2024 00:12:39 +0200
+ -- Slimbook <dev@slimbook.es>  Fri, 18 Oct 2024 00:12:39 +0200
 
 calamares-settings-slimbook (24.18.0) noble; urgency=medium
 
