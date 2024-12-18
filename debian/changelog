@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.20) noble; urgency=medium
+
+  * Updated appselector with new models
+
+ -- Slimbook <dev@slimbook.es>  Wed, 18 Dec 2024 12:16:59 +0100
+
 calamares-settings-slimbook (24.19) noble; urgency=medium
 
   * Added new models to app selection
