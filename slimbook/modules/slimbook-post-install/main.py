@@ -35,6 +35,9 @@ def run():
             args = ["apt","install","-y"] + packages
             check_target_env_call(args)
 
+    status = "Rebuilding grub..."
+    check_target_env_call(["update-grub"])
+
     status = "Installing extra drivers..."
     libcalamares.utils.debug(status)
     check_target_env_call(["ubuntu-drivers", "install"])

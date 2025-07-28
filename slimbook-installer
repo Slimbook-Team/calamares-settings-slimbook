@@ -34,6 +34,9 @@ function enable_oem
 
     cp /usr/share/calamares-settings-slimbook/slimbook-installer-autostart.desktop /etc/xdg/autostart/
     cp /usr/share/calamares-settings-slimbook/slimbook-installer.desktop /usr/share/applications/
+
+    #enable kscreenlocker workaround
+    cp /usr/share/calamares-settings-slimbook/kde /etc/pam.d/
 }
 
 function disable_oem
@@ -66,6 +69,10 @@ function disable_oem
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
         rm /usr/share/applications/slimbook-installer.desktop
+
+        #disable kscreenlocker workaround
+        rm /etc/pam.d/kde
+
         touch /var/lib/slimbook.installer.done
     fi
 
