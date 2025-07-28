@@ -4,3 +4,4 @@ slimbook-calamares /usr/bin/
 *.desktop   /usr/share/calamares-settings-slimbook/
 *.svg /usr/share/icons/hicolor/scalable/apps/
 *.policy /usr/share/polkit-1/actions/
+kde   /usr/share/calamares-settings-slimbook/

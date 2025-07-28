@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.21) noble; urgency=medium
+
+  * Added a workaround for kde not unlocking password-less sessions
+  * Rebuilding grub after installing extra packages with boot configs
+
+ -- Slimbook <dev@slimbook.es>  Mon, 28 Jul 2025 18:07:21 +0200
+
 calamares-settings-slimbook (24.20) noble; urgency=medium
 
   * Updated appselector with new models

@@ -18,6 +18,10 @@ case "$1" in
             mv ${ORIGINAL_FILE} ${DIVERT_FILE} || true
         fi
 
+        if [ ! -f /var/lib/slimbook.installer.done ]; then
+            cp /usr/share/calamares-settings-slimbook/kde /etc/pam.d/
+        fi
+
     ;;
 
     abort-upgrade|abort-deconfigure|abort-remove)
