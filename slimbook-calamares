@@ -1,5 +1,7 @@
 #!/bin/bash
 
+extra_args=$*
+
 function run_installer
 {
     if [ -f /var/lib/slimbook.installer.done ]; then
@@ -27,7 +29,7 @@ function run_installer
     fi
 
     export QT_STYLE_OVERRIDE=adwaita
-    calamares -X
+    calamares -X $extra_args
 
 }
 
