@@ -1,3 +1,10 @@
+calamares-settings-slimbook (24.22) noble; urgency=medium
+
+  * Calamares arguments can be passed now to our wrapper
+  * Ubuntu drivers is now disabled until we get to a decent solution
+
+ -- Slimbook <dev@slimbook.es>  Sun, 10 Aug 2025 14:15:42 +0200
+
 calamares-settings-slimbook (24.21) noble; urgency=medium
 
   * Added a workaround for kde not unlocking password-less sessions
