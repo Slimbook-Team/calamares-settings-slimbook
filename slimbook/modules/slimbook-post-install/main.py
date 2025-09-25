@@ -12,6 +12,10 @@ from libcalamares.utils import check_target_env_call
 def run():
     global status
 
+    status = "Fixing bogus squash files..."
+    libcalamares.utils.debug(status)
+    check_target_env_call(["find", "/var/lib/dpkg/info/","-type","c","-delete"])
+
     status = "Enabling OEM mode..."
     libcalamares.utils.debug(status)
     check_target_env_call(["slimbook-installer", "--enable-oem"])
