@@ -1,0 +1,57 @@
+#!/bin/bash
+
+KERNEL_VERSION="oem-24.04d"
+NVIDIA_DRIVER_VERSION="590"
+
+CLASS_ETHERNET="0x020000"
+CLASS_NETWORK="0x028000"
+CLASS_VGA="0x030000"
+
+VENDOR_AMD="0x1002"
+VENDOR_INTEL="0x8086"
+VENDOR_NVIDIA="0x10de"
+VENDOR_MOTORCOMM="0x1f0a"
+
+packages=""
+
+for device in /sys/bus/pci/devices/*; do
+
+    class=$(<$device/class)
+    vendor=$(<$device/vendor)
+    product=$(<$device/device)
+
+    if [ "$class" == "$CLASS_VGA" ]; then
+
+        if [ "$vendor" == "$VENDOR_NVIDIA" ]; then
+            echo "Found NVIDIA GPU"
+            packages="$packages nvidia-driver-$NVIDIA_DRIVER_VERSION-open"
+        fi
+    fi
+
+    if [ "$class" == "$CLASS_NETWORK" ]; then
+
+        if [ "$vendor" == "$VENDOR_INTEL" ]; then
+            # Needs more fine tuning
+            echo "Found Intel iwlwifi device"
+            packages="$packages linux-modules-iwlwifi-$KERNEL_VERSION"
+        fi
+
+    fi
+
+    if [ "$class" == "$CLASS_ETHERNET" ]; then
+
+        if [ "$vendor" == "$VENDOR_MOTORCOMM" ]; then
+
+            if [ "$product" == "0x6801" ]; then
+                echo "Found Motorcomm 6801 Ethernet device"
+                packages="$packages slimbook-yt6801-dkms"
+            fi
+
+        fi
+
+    fi
+done
+
+if [ -n "$packages" ]; then
+    echo "Packages: $packages"
+fi
