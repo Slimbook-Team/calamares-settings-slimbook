@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.24) noble; urgency=medium
+
+  * Added a wip script that would guide post-installations into extra driver download (nvidia, iwlwifi, ...)
+
+ -- Slimbook <dev@slimbook.es>  Thu, 12 Feb 2026 23:23:05 +0100
+
 calamares-settings-slimbook (24.23) noble; urgency=medium
 
   * Fixing dpkg info directory (squash bogus files)
