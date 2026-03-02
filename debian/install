@@ -1,4 +1,5 @@
 slimbook/*  /usr/share/calamares-settings-slimbook/
+slimbook-drivers /usr/bin/
 slimbook-installer /usr/bin/
 slimbook-calamares /usr/bin/
 *.desktop   /usr/share/calamares-settings-slimbook/

@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.25) noble; urgency=medium
+
+  * Added slimbook drivers helper in early stage
+
+ -- Slimbook <dev@slimbook.es>  Mon, 02 Mar 2026 21:53:57 +0100
+
 calamares-settings-slimbook (24.24) noble; urgency=medium
 
   * Added a wip script that would guide post-installations into extra driver download (nvidia, iwlwifi, ...)
