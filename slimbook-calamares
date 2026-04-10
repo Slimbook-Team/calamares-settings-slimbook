@@ -28,7 +28,7 @@ function run_installer
         export XDG_CONFIG_DIRS=/usr/share/calamares-settings-slimbook/oem:$XDG_CONFIG_DIRS:/etc/xdg
     fi
 
-    export QT_STYLE_OVERRIDE=adwaita
+    #export QT_STYLE_OVERRIDE=adwaita
     calamares -X $extra_args
 
 }
