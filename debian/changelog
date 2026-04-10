@@ -1,3 +1,9 @@
+calamares-settings-slimbook (26.0~alpha2) resolute; urgency=medium
+
+  * Not forcing qt theme to adwaita
+
+ -- Slimbook <dev@slimbook.es>  Fri, 10 Apr 2026 13:14:00 +0200
+
 calamares-settings-slimbook (26.0~alpha1) resolute; urgency=medium
 
   * Provisional 26 look and feel
