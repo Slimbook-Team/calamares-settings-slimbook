@@ -1,3 +1,9 @@
+calamares-settings-slimbook (26.0~alpha1) resolute; urgency=medium
+
+  * Provisional 26 look and feel
+
+ -- Slimbook <dev@slimbook.es>  Fri, 10 Apr 2026 13:00:11 +0200
+
 calamares-settings-slimbook (26.0~alpha0) resolute; urgency=medium
 
   * 26.04 initial release
