@@ -9,10 +9,10 @@ windowPlacement: center
 strings:
     productName:         Slimbook OS
     shortProductName:    Slimbook OS
-    version:             24
-    shortVersion:        24
-    versionedName:       Slimbook OS 24
-    shortVersionedName:  Slimbook OS 24
+    version:             26
+    shortVersion:        26
+    versionedName:       Slimbook OS 26
+    shortVersionedName:  Slimbook OS 26
     bootloaderEntryName: Slimbook-OS
     productUrl:          https://www.slimbook.com
     supportUrl:          https://www.slimbook.com
@@ -34,6 +34,6 @@ style:
    SidebarBackground:    "#0074a7"
    SidebarText:          "#FFFFFF"
    SidebarTextCurrent:   "#000000"
-   SidebarBackgroundCurrent: "#ffe737"
+   SidebarBackgroundCurrent: "#ffa500"
 
 slideshowAPI: 2
