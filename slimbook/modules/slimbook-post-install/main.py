@@ -36,7 +36,7 @@ def run():
 
     if (packages):
         if (len(packages) > 0):
-            args = ["apt","install","-y"] + packages
+            args = ["apt","install","-y", "--ignore-missing"] + packages
             check_target_env_call(args)
 
     status = "Rebuilding grub..."
