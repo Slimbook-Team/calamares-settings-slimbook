@@ -1,3 +1,9 @@
+calamares-settings-slimbook (26.0~alpha3) resolute; urgency=medium
+
+  * Ignore missing packages at post install stage (this may help testing alpha 26)
+
+ -- Slimbook <dev@slimbook.es>  Tue, 14 Apr 2026 20:17:38 +0200
+
 calamares-settings-slimbook (26.0~alpha2) resolute; urgency=medium
 
   * Not forcing qt theme to adwaita
