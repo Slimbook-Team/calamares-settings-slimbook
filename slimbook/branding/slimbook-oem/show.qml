@@ -41,7 +41,7 @@ Presentation
         Text {
             anchors.horizontalCenter: background.horizontalCenter
             anchors.top: background.bottom
-            text: qsTr("Welcome to Slimbook OS 24")
+            text: qsTr("Welcome to Slimbook OS 26")
             wrapMode: Text.WordWrap
             width: 600
             horizontalAlignment: Text.Center
