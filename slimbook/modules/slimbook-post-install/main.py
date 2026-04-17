@@ -27,9 +27,9 @@ def run():
 
     try :
         os.makedirs(efi_path + "ubuntu", exist_ok = True)
-        shutil.copyfile(efi_path + "slimbookos/grub.cfg",efi_path + "ubuntu/grub.cfg")
+        shutil.copyfile(efi_path + "slimbookos26/grub.cfg",efi_path + "ubuntu/grub.cfg")
     except Exception as e:
-        libcalamares.utils.debug(e)
+        libcalamares.utils.debug(str(e))
 
     status = "Installing extra packages..."
     packages = libcalamares.globalstorage.value("slimbook_extra_apps")
@@ -38,6 +38,9 @@ def run():
         if (len(packages) > 0):
             args = ["apt","install","-y", "--ignore-missing"] + packages
             check_target_env_call(args)
+
+            #check_target_env_call(["slimbook-drivers", "install"])
+
 
     status = "Rebuilding grub..."
     libcalamares.utils.debug(status)

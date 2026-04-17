@@ -23,7 +23,7 @@ for device in /sys/bus/pci/devices/*; do
     if [ "$class" == "$CLASS_VGA" ]; then
 
         if [ "$vendor" == "$VENDOR_NVIDIA" ]; then
-            echo "Found NVIDIA GPU"
+            echo "Found NVIDIA GPU" >&2
             packages="$packages nvidia-driver-$NVIDIA_DRIVER_VERSION-open"
         fi
     fi
@@ -32,7 +32,7 @@ for device in /sys/bus/pci/devices/*; do
 
         if [ "$vendor" == "$VENDOR_INTEL" ]; then
             # Needs more fine tuning
-            echo "Found Intel iwlwifi device"
+            echo "Found Intel iwlwifi device" >&2
             packages="$packages linux-modules-iwlwifi-$KERNEL_VERSION"
         fi
 
@@ -43,7 +43,7 @@ for device in /sys/bus/pci/devices/*; do
         if [ "$vendor" == "$VENDOR_MOTORCOMM" ]; then
 
             if [ "$product" == "0x6801" ]; then
-                echo "Found Motorcomm 6801 Ethernet device"
+                echo "Found Motorcomm 6801 Ethernet device" >&2
                 packages="$packages slimbook-yt6801-dkms"
             fi
 
@@ -53,5 +53,10 @@ for device in /sys/bus/pci/devices/*; do
 done
 
 if [ -n "$packages" ]; then
-    echo "Packages: $packages"
+    echo "Packages:" >&2
+    echo $packages
+
+    if [ "$1" = "install" ]; then
+        apt install -y --ignore-missing $packages
+    fi
 fi
