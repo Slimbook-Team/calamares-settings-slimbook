@@ -29,4 +29,9 @@ def run():
         with open("/etc/gdm3/custom.conf","w") as f:
             config.write(f)
 
+    if (os.path.exists("/usr/bin/slimbook-ai-tools-install")):
+        status = "Installing AI tools, It may take a while..."
+        libcalamares.utils.debug(status)
+        check_target_env_call(["slimbook-ai-tools-install", "--oem"])
+
     return None
