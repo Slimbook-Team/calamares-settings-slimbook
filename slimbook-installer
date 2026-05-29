@@ -15,6 +15,9 @@ function enable_oem
     passwd -d $OEM_USER
     usermod -U $OEM_USER
     usermod -a -G sudo $OEM_USER
+    usermod -a -G adm $OEM_USER
+    usermod -a -G plugdev $OEM_USER
+    echo "$OEM_USER  ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/slimbook-oem
 
     # enable gdm autologin
     if [ -f /usr/sbin/gdm3 ]; then
@@ -65,6 +68,7 @@ function disable_oem
         id -u $OEM_USER
         if [ $? -eq 0 ]; then
             usermod -L -G users $OEM_USER
+            rm /etc/sudoers.d/slimbook-oem
         fi
 
         rm /etc/xdg/autostart/slimbook-installer-autostart.desktop
