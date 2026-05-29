@@ -1,3 +1,10 @@
+calamares-settings-slimbook (26.2.2) resolute; urgency=medium
+
+  * Fixed slimbook-oem sudo access
+  * added slimbook-oem to adm and plugdev groups
+
+ -- Slimbook <dev@slimbook.es>  Fri, 29 May 2026 19:52:16 +0200
+
 calamares-settings-slimbook (26.2.1) resolute; urgency=medium
 
   * Fixed typo in appselector yaml
