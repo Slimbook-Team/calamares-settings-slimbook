@@ -32,6 +32,12 @@ def run():
     if (os.path.exists("/usr/bin/slimbook-ai-tools-install")):
         status = "Installing AI tools, It may take a while..."
         libcalamares.utils.debug(status)
-        check_target_env_call(["slimbook-ai-tools-install", "--oem"])
+        target_env_call(["slimbook-ai-tools-install", "--oem"])
+
+        # this workaround is needed because we are too late and skel is already deployed at recently created user home
+        username = libcalamares.globalstorage.value("username")
+        if username:
+            target_env_call(["cp", "-r","/etc/skel/.var","/home/{0}".format(username)])
+            target_env_call(["chown", "-R","{0}:{1}".format(username,username),"/home/{0}/.var".format(username)])
 
     return None
