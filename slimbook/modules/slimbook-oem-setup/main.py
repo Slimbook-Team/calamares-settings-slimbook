@@ -16,6 +16,23 @@ def run():
     libcalamares.utils.debug(status)
     check_target_env_call(["slimbook-installer", "--disable-oem"])
 
+    sddm_conf = "/etc/sddm.conf"
+
+    try:
+        if (os.path.exists(sddm_conf)):
+            status = "Configure SDDM with wayland..."
+            libcalamares.utils.debug(status)
+
+            config = configparser.ConfigParser()
+            config.optionxform = str
+            config.read(sddm_conf)
+            config["General"] = {}
+            config["General"]["DisplayServer"] = "wayland"
+            with open(sddm_conf,"w") as f:
+                config.write(f)
+    except Exception as e:
+        libcalamares.utils.debug(e)
+
     username = libcalamares.globalstorage.value("autoLoginUser")
     if username is not None:
         status = "Setting up autologin for user {!s}.".format(username)
