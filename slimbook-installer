@@ -25,7 +25,7 @@ function enable_oem
     # enable sddm autologin
     if [ -f /usr/bin/sddm ]; then
         cp /etc/sddm.conf /etc/sddm.conf.orig || true
-        echo -e "[Autologin]\nSession=plasma.desktop\nUser=${OEM_USER}\n" > /etc/sddm.conf
+        echo -e "[Autologin]\nSession=plasma.desktop\nUser=${OEM_USER}\n[General]\nDisplayServer=wayland\n" > /etc/sddm.conf
     fi
 
     if [ -f /var/lib/slimbook.installer.done ]; then
