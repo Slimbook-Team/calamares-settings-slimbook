@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.26) noble; urgency=medium
+
+  * Move sddm (at all stages) to wayland
+
+ -- Slimbook <dev@slimbook.es>  Wed, 03 Jun 2026 12:35:35 +0200
+
 calamares-settings-slimbook (24.25) noble; urgency=medium
 
   * Added slimbook drivers helper in early stage
