@@ -7,7 +7,7 @@ import shutil
 import configparser
 
 import libcalamares
-from libcalamares.utils import check_target_env_call
+from libcalamares.utils import check_target_env_call, target_env_call
 
 def run():
     global status
@@ -36,7 +36,7 @@ def run():
 
         # this workaround is needed because we are too late and skel is already deployed at recently created user home
         username = libcalamares.globalstorage.value("username")
-        if username:
+        if username and os.path.exists("/etc/skel/.var"):
             target_env_call(["cp", "-r","/etc/skel/.var","/home/{0}".format(username)])
             target_env_call(["chown", "-R","{0}:{1}".format(username,username),"/home/{0}/.var".format(username)])
 
