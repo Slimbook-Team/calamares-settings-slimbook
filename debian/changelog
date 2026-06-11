@@ -1,3 +1,9 @@
+calamares-settings-slimbook (24.28) noble; urgency=medium
+
+  * Enabling keyboard backlight at oem
+
+ -- Slimbook <dev@slimbook.es>  Thu, 11 Jun 2026 08:22:05 +0200
+
 calamares-settings-slimbook (24.27) noble; urgency=medium
 
   * No need to force wayland at oem/install modules
