@@ -2,6 +2,9 @@
 # SPDX-FileCopyrightText: 2024 Slimbook <dev@slimbook.es>
 # SPDX-License-Identifier: GPL-3.0-only
 
+import slimbook.kbd
+import slimbook.info
+
 import os
 import shutil
 import configparser
@@ -30,5 +33,15 @@ def run():
             with open("/etc/gdm3/custom.conf","w") as f:
                 config.write(f)
 
+    status = "Turn on keyboard backlight (where available)..."
+    libcalamares.utils.debug(status)
+    
+    try:
+        model = slimbook.info.get_model()
+        max_brightness = slimbook.kbd.brightness_max(model)
+        slimbook.kbd.brightness_set(model, max_brightness)
+        slimbook.kbd.backlight_set(model, 0x16ff16)
+    except:
+        libcalamares.utils.debug("Something went wrong with backlight")
 
     return None
