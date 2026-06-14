@@ -14,6 +14,10 @@ VENDOR_MOTORCOMM="0x1f0a"
 
 packages=""
 
+KERNEL_VERSION=$(uname -r)
+KERNEL_MAJOR=$(echo $KERNEL_VERSION | cut -d'.' -f1)
+KERNEL_MINOR=$(echo $KERNEL_VERSION | cut -d'.' -f2)
+
 for device in /sys/bus/pci/devices/*; do
 
     class=$(<$device/class)
@@ -30,7 +34,7 @@ for device in /sys/bus/pci/devices/*; do
 
     if [ "$class" == "$CLASS_NETWORK" ]; then
 
-        if [ "$vendor" == "$VENDOR_INTEL" ]; then
+        if [ "$vendor" == "$VENDOR_INTEL" ] && [ "$KERNEL_MAJOR" -lt 7 ]; then
             # Needs more fine tuning
             echo "Found Intel iwlwifi device" >&2
             packages="$packages linux-modules-iwlwifi-$KERNEL_VERSION"
@@ -40,7 +44,7 @@ for device in /sys/bus/pci/devices/*; do
 
     if [ "$class" == "$CLASS_ETHERNET" ]; then
 
-        if [ "$vendor" == "$VENDOR_MOTORCOMM" ]; then
+        if [ "$vendor" == "$VENDOR_MOTORCOMM" ] && [ "$KERNEL_MAJOR" -lt 7 ]; then
 
             if [ "$product" == "0x6801" ]; then
                 echo "Found Motorcomm 6801 Ethernet device" >&2
@@ -56,7 +60,7 @@ if [ -n "$packages" ]; then
     echo "Packages:" >&2
     echo $packages
 
-    if [ "$1" = "install" ]; then
+    if [ "$1" == "install" ]; then
         apt install -y --ignore-missing $packages
     fi
 fi
